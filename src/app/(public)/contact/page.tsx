@@ -1,103 +1,147 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "About — VISAC",
-  description:
-    "VISAC is built on restraint: fewer pieces, made properly, meant to last.",
-};
+import { useState, type FormEvent } from "react";
 
-const principles = [
-  {
-    mark: "I",
-    title: "Fewer, better",
-    body: "We release in small, considered drops instead of chasing every season. Every piece earns its place in the range before it ships.",
-  },
-  {
-    mark: "II",
-    title: "Made to be worn out",
-    body: "Materials are chosen for how they age, not just how they photograph. A VISAC piece should look better after a hundred wears than it did on day one.",
-  },
-  {
-    mark: "III",
-    title: "No noise",
-    body: "No logos shouting from across the room. The construction does the talking — the label is on the inside, where it belongs.",
-  },
-];
+const topics = ["Order support", "Wholesale", "Press", "Something else"];
 
-export default function AboutPage() {
+export default function ContactPage() {
+  const [topic, setTopic] = useState(topics[0]);
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSending(true);
+    // Placeholder — wire up to lib/api once the backend exists.
+    setTimeout(() => {
+      setSending(false);
+      setSubmitted(true);
+    }, 600);
+  }
+
   return (
     <main className="min-h-screen bg-[#16151A] text-[#F3F1EC]">
-      {/* Hero */}
-      <section className="mx-auto max-w-5xl px-6 pt-28 pb-20 sm:px-10">
-        <p className="text-xs tracking-[0.3em] text-[#7FA99C] uppercase">
-          About VISAC
-        </p>
-        <h1 className="mt-6 font-serif text-4xl leading-[1.1] tracking-tight sm:text-6xl">
-          We make the things
-          <br />
-          <span className="italic text-[#9A968C]">you stop noticing</span>
-          <br />
-          because they never let you down.
-        </h1>
-        <p className="mt-8 max-w-xl text-[15px] leading-relaxed text-[#B5B2A9]">
-          VISAC started in 2019 as a two-person workshop with a simple
-          complaint: most clothing is designed to sell once, not to be worn
-          for a decade. Everything we've built since is an answer to that.
-        </p>
-      </section>
+      <div className="mx-auto grid max-w-5xl gap-16 px-6 pt-28 pb-24 sm:px-10 md:grid-cols-2 md:gap-10">
+        {/* Left: heading + direct channels */}
+        <div>
+          <p className="text-xs tracking-[0.3em] text-[#7FA99C] uppercase">
+            Contact
+          </p>
+          <h1 className="mt-6 font-serif text-4xl leading-[1.1] tracking-tight sm:text-5xl">
+            Tell us
+            <br />
+            <span className="italic text-[#9A968C]">what's wrong,</span>
+            <br />
+            we'll fix it.
+          </h1>
 
-      <div className="mx-auto h-px max-w-5xl bg-[#34333B]" />
+          <div className="mt-12 space-y-6 text-sm">
+            <div>
+              <p className="text-[#9A968C]">Email</p>
+              <p className="mt-1">hello@visac.co</p>
+            </div>
+            <div>
+              <p className="text-[#9A968C]">Response time</p>
+              <p className="mt-1">Within one business day</p>
+            </div>
+            <div>
+              <p className="text-[#9A968C]">Studio</p>
+              <p className="mt-1">Open by appointment only</p>
+            </div>
+          </div>
+        </div>
 
-      {/* Principles */}
-      <section className="mx-auto max-w-5xl px-6 py-20 sm:px-10">
-        <div className="grid gap-14 sm:grid-cols-3 sm:gap-8">
-          {principles.map((p) => (
-            <div key={p.mark}>
-              <span className="font-serif text-sm italic text-[#7FA99C]">
-                {p.mark}
-              </span>
-              <h2 className="mt-4 font-serif text-xl tracking-tight">
-                {p.title}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-[#9A968C]">
-                {p.body}
+        {/* Right: form */}
+        <div>
+          {submitted ? (
+            <div className="rounded border border-[#34333B] bg-[#1F1E24] p-8">
+              <p className="font-serif text-xl italic">Message sent.</p>
+              <p className="mt-2 text-sm text-[#9A968C]">
+                We've got it — expect a reply within a business day.
               </p>
             </div>
-          ))}
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label className="text-xs tracking-[0.15em] text-[#9A968C] uppercase">
+                  What's this about
+                </label>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {topics.map((t) => (
+                    <button
+                      type="button"
+                      key={t}
+                      onClick={() => setTopic(t)}
+                      className={`rounded-full border px-4 py-2 text-xs tracking-wide transition-colors ${
+                        topic === t
+                          ? "border-[#3F7D6E] bg-[#3F7D6E]/15 text-[#F3F1EC]"
+                          : "border-[#34333B] text-[#9A968C] hover:border-[#7FA99C]"
+                      }`}
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="name"
+                  className="text-xs tracking-[0.15em] text-[#9A968C] uppercase"
+                >
+                  Name
+                </label>
+                <input
+                  id="name"
+                  required
+                  className="mt-3 w-full border-b border-[#34333B] bg-transparent py-2 text-sm outline-none focus:border-[#7FA99C]"
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="email"
+                  className="text-xs tracking-[0.15em] text-[#9A968C] uppercase"
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  className="mt-3 w-full border-b border-[#34333B] bg-transparent py-2 text-sm outline-none focus:border-[#7FA99C]"
+                  placeholder="you@example.com"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="message"
+                  className="text-xs tracking-[0.15em] text-[#9A968C] uppercase"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  required
+                  rows={4}
+                  className="mt-3 w-full resize-none border-b border-[#34333B] bg-transparent py-2 text-sm outline-none focus:border-[#7FA99C]"
+                  placeholder="What's going on?"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={sending}
+                className="mt-4 w-full rounded bg-[#F3F1EC] py-3 text-sm font-medium tracking-wide text-[#16151A] transition-opacity hover:opacity-90 disabled:opacity-50"
+              >
+                {sending ? "Sending…" : "Send message"}
+              </button>
+            </form>
+          )}
         </div>
-      </section>
-
-      <div className="mx-auto h-px max-w-5xl bg-[#34333B]" />
-
-      {/* Pull quote */}
-      <section className="mx-auto max-w-3xl px-6 py-24 text-center sm:px-10">
-        <blockquote className="font-serif text-2xl italic leading-snug tracking-tight sm:text-3xl">
-          &ldquo;Good design disappears into the way you actually live. We're
-          not trying to be remembered — we're trying to be relied on.&rdquo;
-        </blockquote>
-        <p className="mt-6 text-xs tracking-[0.3em] text-[#7FA99C] uppercase">
-          Founders, VISAC
-        </p>
-      </section>
-
-      {/* Facts strip */}
-      <section className="border-t border-[#34333B]">
-        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-10 px-6 py-16 sm:grid-cols-4 sm:px-10">
-          {[
-            ["2019", "Founded"],
-            ["4", "Drops per year"],
-            ["12", "Countries shipped to"],
-            ["0", "Logos on the outside"],
-          ].map(([stat, label]) => (
-            <div key={label}>
-              <p className="font-serif text-3xl tracking-tight">{stat}</p>
-              <p className="mt-1 text-xs tracking-[0.15em] text-[#9A968C] uppercase">
-                {label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+      </div>
     </main>
   );
 }
