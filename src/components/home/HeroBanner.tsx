@@ -1,54 +1,51 @@
-// src/components/home/HeroBanner.tsx
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroBanner() {
   return (
-    <section className="relative h-[70vh] min-h-[480px] w-full overflow-hidden bg-neutral-900">
-      {/* Background image */}
-      <Image
-        src="/images/banners/hero-main.jpg"
-        alt="VISAC premium clothing collection"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover opacity-80"
-      />
-
-      {/* Overlay for text contrast */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-
-      {/* Content */}
-      <div className="relative z-10 flex h-full items-end sm:items-center">
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 sm:pb-0">
-          <div className="max-w-xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-white/80">
-              New Season
+    <section className="relative bg-[#FAFAF8]">
+      <div className="grid grid-cols-1 md:min-h-[32rem] md:grid-cols-12 md:items-stretch">
+        {/* Copy */}
+        <div className="order-2 flex flex-col justify-center px-6 py-16 md:order-1 md:col-span-5 md:px-10 md:py-24 lg:pl-16">
+          <div className="max-w-md">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7A5518]">
+              VISAC — new arrivals
             </p>
-            <h1 className="mt-3 font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
-              Timeless Style,
-              <br />
-              Refined for Today
+            <h1 className="mt-4 font-serif text-4xl leading-[1.05] text-[#171717] sm:text-5xl md:text-[3.25rem]">
+              Objects worth
+              <br className="hidden md:block" /> living with.
             </h1>
-            <p className="mt-4 text-sm sm:text-base text-white/90 max-w-md">
-              Discover VISAC&apos;s premium collection — crafted for those who
-              value quality and understated elegance.
+            <p className="mt-6 text-base leading-relaxed text-[#5B5E57]">
+              Thoughtfully made pieces for the home and everyday carry,
+              sourced from independent makers and stocked in limited runs.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-6">
               <Link
                 href="/shop"
-                className="inline-block bg-white px-8 py-3 text-sm uppercase tracking-wide text-neutral-900 hover:bg-neutral-100 transition-colors"
+                className="inline-flex items-center justify-center rounded-full bg-[#2F4A3D] px-7 py-3 text-sm font-medium text-white transition hover:bg-[#263D33]"
               >
-                Shop Now
+                Shop new arrivals
               </Link>
               <Link
                 href="/categories"
-                className="inline-block border border-white px-8 py-3 text-sm uppercase tracking-wide text-white hover:bg-white hover:text-neutral-900 transition-colors"
+                className="text-sm font-medium text-[#171717] underline decoration-[#E4E2DC] underline-offset-4 transition hover:decoration-[#171717]"
               >
-                Explore Categories
+                Explore categories
               </Link>
             </div>
           </div>
+        </div>
+
+        {/* Image bleeds to the viewport edge — the section's signature move */}
+        <div className="relative order-1 aspect-[4/3] w-full md:order-2 md:col-span-7 md:aspect-auto">
+          <Image
+            src="/images/banners/hero.jpg"
+            alt="A sunlit corner of the VISAC studio styled with new-season pieces"
+            fill
+            priority
+            sizes="(min-width: 768px) 58vw, 100vw"
+            className="object-cover"
+          />
         </div>
       </div>
     </section>
