@@ -1,130 +1,100 @@
-// src/components/layout/Footer.tsx
-import Link from "next/link";
-import { Instagram, Facebook, Twitter } from "lucide-react";
+import Link from 'next/link';
+import { Instagram, Twitter, Facebook } from 'lucide-react';
 
-const FOOTER_LINKS = {
-  shop: [
-    { label: "New Arrivals", href: "/shop?sortBy=newest" },
-    { label: "Best Sellers", href: "/shop?sortBy=popular" },
-    { label: "Categories", href: "/categories" },
-    { label: "Sale", href: "/shop?onSale=true" },
-  ],
-  support: [
-    { label: "Contact Us", href: "/contact" },
-    { label: "FAQ", href: "/faq" },
-    { label: "Order Tracking", href: "/order-tracking" },
-    { label: "Shipping & Returns", href: "/faq#shipping" },
-  ],
-  company: [
-    { label: "About Us", href: "/about" },
-    { label: "Privacy Policy", href: "/privacy-policy" },
-    { label: "Terms & Conditions", href: "/terms" },
-  ],
-};
+const FOOTER_COLUMNS = [
+  {
+    heading: 'Shop',
+    links: [
+      { label: 'Electronics', href: '/categories/electronics' },
+      { label: 'Fashion', href: '/categories/fashion' },
+      { label: 'Home & Living', href: '/categories/home-living' },
+      { label: 'Beauty', href: '/categories/beauty' },
+    ],
+  },
+  {
+    heading: 'Support',
+    links: [
+      { label: 'Contact us', href: '/contact' },
+      { label: 'FAQ', href: '/faq' },
+      { label: 'Order tracking', href: '/order-tracking' },
+      { label: 'Returns', href: '/returns' },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { label: 'About', href: '/about' },
+      { label: 'Careers', href: '/careers' },
+      { label: 'Privacy policy', href: '/privacy-policy' },
+      { label: 'Terms', href: '/terms' },
+    ],
+  },
+];
 
 export default function Footer() {
-  const year = new Date().getFullYear();
-
   return (
-    <footer className="border-t border-neutral-200 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-          {/* Brand column */}
-          <div className="col-span-2 md:col-span-1">
-            <Link
-              href="/"
-              className="font-serif text-xl tracking-widest font-semibold"
-            >
-              VISAC
-            </Link>
-            <p className="mt-3 text-sm text-neutral-500 leading-relaxed">
-              Timeless, refined clothing crafted for the modern wardrobe.
+    <footer className="border-t border-[#E4E1D8] bg-[#FAF8F3]">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
+          <div className="col-span-2">
+            <span className="font-serif text-xl text-[#1F1E1C]">VISAC</span>
+            <p className="mt-3 max-w-xs text-sm text-[#6B6B76]">
+              Considered goods for everyday life, picked over and stocked with care.
             </p>
-            <div className="mt-4 flex gap-4">
-              
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="text-neutral-500 hover:text-neutral-900 transition-colors"
-              >
-                <Instagram size={18} />
+            <div className="mt-5 flex items-center gap-3">
+              <a href="#" aria-label="Instagram" className="text-[#1F1E1C] hover:text-[#0F5C55]">
+                <Instagram size={18} strokeWidth={1.75} />
               </a>
-              
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="text-neutral-500 hover:text-neutral-900 transition-colors"
-              >
-                <Facebook size={18} />
+              <a href="#" aria-label="Twitter" className="text-[#1F1E1C] hover:text-[#0F5C55]">
+                <Twitter size={18} strokeWidth={1.75} />
               </a>
-              
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Twitter"
-                className="text-neutral-500 hover:text-neutral-900 transition-colors"
-              >
-                <Twitter size={18} />
+              <a href="#" aria-label="Facebook" className="text-[#1F1E1C] hover:text-[#0F5C55]">
+                <Facebook size={18} strokeWidth={1.75} />
               </a>
             </div>
           </div>
 
-          {/* Shop links */}
-          <FooterColumn title="Shop" links={FOOTER_LINKS.shop} />
+          {FOOTER_COLUMNS.map((col) => (
+            <div key={col.heading}>
+              <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#9A968C]">{col.heading}</p>
+              <ul className="mt-3 space-y-2">
+                {col.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm text-[#1F1E1C] hover:text-[#0F5C55]">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
-          {/* Support links */}
-          <FooterColumn title="Support" links={FOOTER_LINKS.support} />
-
-          {/* Company links */}
-          <FooterColumn title="Company" links={FOOTER_LINKS.company} />
-        </div>
-
-        {/* Bottom bar */}
-        <div className="mt-10 border-t border-neutral-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-neutral-500">
-            &copy; {year} VISAC. All rights reserved.
-          </p>
-          <div className="flex gap-4 text-xs text-neutral-500">
-            <Link href="/privacy-policy" className="hover:text-neutral-900">
-              Privacy
-            </Link>
-            <Link href="/terms" className="hover:text-neutral-900">
-              Terms
-            </Link>
+          <div className="col-span-2 md:col-span-1">
+            <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-[#9A968C]">Stay in touch</p>
+            <p className="mt-3 text-sm text-[#6B6B76]">Get news on drops and restocks.</p>
+            <form className="mt-3 flex overflow-hidden rounded-full border border-[#E4E1D8] bg-white">
+              <input
+                type="email"
+                placeholder="Email address"
+                className="w-full bg-transparent px-4 py-2 text-sm text-[#1F1E1C] placeholder:text-[#9A968C] focus:outline-none"
+              />
+              <button
+                type="submit"
+                className="shrink-0 bg-[#1F1E1C] px-4 text-sm font-medium text-white transition-colors hover:bg-[#0F5C55]"
+              >
+                Join
+              </button>
+            </form>
           </div>
         </div>
       </div>
-    </footer>
-  );
-}
 
-// Small internal component — keeps the three link columns from repeating markup
-function FooterColumn({
-  title,
-  links,
-}: {
-  title: string;
-  links: { label: string; href: string }[];
-}) {
-  return (
-    <div>
-      <h3 className="text-sm font-medium uppercase tracking-wide text-neutral-900">
-        {title}
-      </h3>
-      <ul className="mt-4 space-y-3">
-        {links.map((link) => (
-          <li key={link.href}>
-            <Link
-              href={link.href}
-              className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors"
-            >
-              {link.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <div className="border-t border-dashed border-[#D8D4C8]">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-4 font-mono text-[11px] text-[#9A968C] sm:flex-row sm:px-6 lg:px-8">
+          <span>© {new Date().getFullYear()} VISAC. All rights reserved.</span>
+          <span>Visa · Mastercard · Amex · PayPal</span>
+        </div>
+      </div>
+    </footer>
   );
 }
