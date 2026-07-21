@@ -1,104 +1,178 @@
-// src/components/layout/Header.tsx
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useState } from "react";
-import { Search, Heart, User, ShoppingBag, Menu, X } from "lucide-react";
+import { useState } from 'react';
+import Link from 'next/link';
+import { Search, Heart, ShoppingBag, User, Menu, X } from 'lucide-react';
+import MegaMenu from './MegaMenu';
+import MobileNav from './MobileNav';
+import { useCart } from '@/hooks/useCart';
+import { useWishlist } from '@/hooks/useWishlist';
 
-import { useCart } from "@/context/CartContext";
-import { useWishlist } from "@/context/WishlistContext";
-import { useAuth } from "@/context/AuthContext";
+export type NavCategory = {
+  label: string;
+  slug: string;
+  subcategories: { label: string; slug: string }[];
+  featured?: { label: string; slug: string; image: string };
+};
 
-const NAV_LINKS = [
-  { label: "Shop", href: "/shop" },
-  { label: "Categories", href: "/categories" },
-  { label: "About Us", href: "/about" },
-  { label: "Contact", href: "/contact" },
+export const NAV_CATEGORIES: NavCategory[] = [
+  {
+    label: 'Electronics',
+    slug: 'electronics',
+    subcategories: [
+      { label: 'Headphones', slug: 'headphones' },
+      { label: 'Laptops', slug: 'laptops' },
+      { label: 'Smart Home', slug: 'smart-home' },
+      { label: 'Cameras', slug: 'cameras' },
+    ],
+    featured: { label: 'New arrivals', slug: 'electronics/new', image: '/images/categories/electronics.jpg' },
+  },
+  {
+    label: 'Fashion',
+    slug: 'fashion',
+    subcategories: [
+      { label: "Women's", slug: 'womens' },
+      { label: "Men's", slug: 'mens' },
+      { label: 'Footwear', slug: 'footwear' },
+      { label: 'Accessories', slug: 'accessories' },
+    ],
+    featured: { label: 'Season edit', slug: 'fashion/edit', image: '/images/categories/fashion.jpg' },
+  },
+  {
+    label: 'Home & Living',
+    slug: 'home-living',
+    subcategories: [
+      { label: 'Furniture', slug: 'furniture' },
+      { label: 'Kitchen', slug: 'kitchen' },
+      { label: 'Decor', slug: 'decor' },
+      { label: 'Lighting', slug: 'lighting' },
+    ],
+  },
+  {
+    label: 'Beauty',
+    slug: 'beauty',
+    subcategories: [
+      { label: 'Skincare', slug: 'skincare' },
+      { label: 'Fragrance', slug: 'fragrance' },
+      { label: 'Makeup', slug: 'makeup' },
+    ],
+  },
 ];
 
 export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
 
-  const { totalItems: cartCount } = useCart();
-  const { totalItems: wishlistCount } = useWishlist();
-  const { isAuthenticated, isLoading } = useAuth();
+  const { items: cartItems } = useCart();
+  const { items: wishlistItems } = useWishlist();
+
+  const cartCount = cartItems?.reduce((sum, item) => sum + item.quantity, 0) ?? 0;
+  const wishlistCount = wishlistItems?.length ?? 0;
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-neutral-200">
-      {/* Top bar */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          {/* Mobile menu toggle */}
+    <header className="sticky top-0 z-50 bg-[#FAF8F3]/95 backdrop-blur">
+      {/* Utility strip */}
+      <div className="hidden border-b border-dashed border-[#D8D4C8] bg-[#1F1E1C] py-1.5 text-center font-mono text-[11px] tracking-wide text-[#FAF8F3] sm:block">
+        Free shipping on orders over $75 — no code needed
+      </div>
+
+      <div className="border-b border-[#E4E1D8]">
+        <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+          {/* Mobile menu trigger */}
           <button
-            className="lg:hidden p-2 -ml-2"
-            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            aria-label="Toggle menu"
-            aria-expanded={isMobileMenuOpen}
+            type="button"
+            onClick={() => setMobileNavOpen(true)}
+            className="-ml-2 inline-flex items-center justify-center rounded-md p-2 text-[#1F1E1C] lg:hidden"
+            aria-label="Open menu"
           >
-            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            <Menu size={22} strokeWidth={1.75} />
           </button>
 
           {/* Logo */}
-          <Link
-            href="/"
-            className="font-serif text-2xl tracking-widest font-semibold"
-          >
+          <Link href="/" className="shrink-0 font-serif text-[1.4rem] tracking-tight text-[#1F1E1C]">
             VISAC
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm uppercase tracking-wide text-neutral-700 hover:text-neutral-900 transition-colors"
+          <nav
+            className="hidden lg:ml-4 lg:flex lg:items-center lg:gap-1"
+            onMouseLeave={() => setOpenCategory(null)}
+          >
+            {NAV_CATEGORIES.map((category) => (
+              <div
+                key={category.slug}
+                className="relative"
+                onMouseEnter={() => setOpenCategory(category.slug)}
               >
-                {link.label}
-              </Link>
+                <Link
+                  href={`/categories/${category.slug}`}
+                  className={`inline-flex items-center px-3 py-2 text-sm tracking-wide transition-colors ${
+                    openCategory === category.slug
+                      ? 'text-[#0F5C55]'
+                      : 'text-[#1F1E1C] hover:text-[#0F5C55]'
+                  }`}
+                >
+                  {category.label}
+                </Link>
+                {openCategory === category.slug && (
+                  <MegaMenu category={category} onClose={() => setOpenCategory(null)} />
+                )}
+              </div>
             ))}
           </nav>
 
-          {/* Action icons */}
-          <div className="flex items-center gap-1 sm:gap-2">
-            <button
-              className="p-2 hover:text-neutral-500 transition-colors"
-              onClick={() => setIsSearchOpen((prev) => !prev)}
-              aria-label="Search"
-            >
-              <Search size={20} />
-            </button>
+          {/* Desktop search */}
+          <div className="ml-auto hidden max-w-sm flex-1 items-center gap-2 rounded-full border border-[#E4E1D8] bg-white px-4 py-2 md:flex">
+            <Search size={16} strokeWidth={1.75} className="shrink-0 text-[#9A968C]" />
+            <input
+              type="search"
+              placeholder="Search products"
+              className="w-full bg-transparent text-sm text-[#1F1E1C] placeholder:text-[#9A968C] focus:outline-none"
+            />
+          </div>
 
+          {/* Actions */}
+          <div className="ml-auto flex items-center gap-1 md:ml-4">
+            <button
+              type="button"
+              onClick={() => setMobileSearchOpen((open) => !open)}
+              className="inline-flex items-center justify-center rounded-md p-2 text-[#1F1E1C] hover:text-[#0F5C55] md:hidden"
+              aria-label="Toggle search"
+            >
+              {mobileSearchOpen ? (
+                <X size={20} strokeWidth={1.75} />
+              ) : (
+                <Search size={20} strokeWidth={1.75} />
+              )}
+            </button>
             <Link
-              href={isLoading ? "#" : isAuthenticated ? "/profile" : "/login"}
-              className="p-2 hover:text-neutral-500 transition-colors"
+              href="/login"
+              className="hidden items-center justify-center rounded-md p-2 text-[#1F1E1C] hover:text-[#0F5C55] sm:inline-flex"
               aria-label="Account"
             >
-              <User size={20} />
+              <User size={20} strokeWidth={1.75} />
             </Link>
-
             <Link
               href="/wishlist"
-              className="relative p-2 hover:text-neutral-500 transition-colors"
+              className="relative hidden items-center justify-center rounded-md p-2 text-[#1F1E1C] hover:text-[#0F5C55] sm:inline-flex"
               aria-label="Wishlist"
             >
-              <Heart size={20} />
+              <Heart size={20} strokeWidth={1.75} />
               {wishlistCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-neutral-900 text-[10px] text-white">
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#E8785A] px-1 font-mono text-[10px] leading-none text-white">
                   {wishlistCount}
                 </span>
               )}
             </Link>
-
             <Link
               href="/cart"
-              className="relative p-2 hover:text-neutral-500 transition-colors"
+              className="relative inline-flex items-center justify-center rounded-md p-2 text-[#1F1E1C] hover:text-[#0F5C55]"
               aria-label="Cart"
             >
-              <ShoppingBag size={20} />
+              <ShoppingBag size={20} strokeWidth={1.75} />
               {cartCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-neutral-900 text-[10px] text-white">
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#0F5C55] px-1 font-mono text-[10px] leading-none text-white">
                   {cartCount}
                 </span>
               )}
@@ -106,37 +180,27 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Expandable search bar */}
-        {isSearchOpen && (
-          <div className="border-t border-neutral-200 py-4">
-            <input
-              type="text"
-              placeholder="Search products..."
-              className="w-full rounded-md border border-neutral-300 px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-neutral-900"
-              autoFocus
-            />
+        {/* Mobile search bar */}
+        {mobileSearchOpen && (
+          <div className="border-t border-[#E4E1D8] px-4 py-3 md:hidden">
+            <div className="flex items-center gap-2 rounded-full border border-[#E4E1D8] bg-white px-4 py-2">
+              <Search size={16} strokeWidth={1.75} className="shrink-0 text-[#9A968C]" />
+              <input
+                type="search"
+                autoFocus
+                placeholder="Search products"
+                className="w-full bg-transparent text-sm text-[#1F1E1C] placeholder:text-[#9A968C] focus:outline-none"
+              />
+            </div>
           </div>
         )}
       </div>
 
-      {/* Mobile nav drawer */}
-      {isMobileMenuOpen && (
-        <nav className="lg:hidden border-t border-neutral-200 bg-white">
-          <ul className="flex flex-col px-4 py-2">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="block py-3 text-sm uppercase tracking-wide text-neutral-700"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
+      <MobileNav
+        isOpen={mobileNavOpen}
+        onClose={() => setMobileNavOpen(false)}
+        categories={NAV_CATEGORIES}
+      />
     </header>
   );
 }
