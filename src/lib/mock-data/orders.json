@@ -1,0 +1,149 @@
+[
+  {
+    "id": "ord-001",
+    "orderNumber": "VS-100234",
+    "userId": "user-001",
+    "items": [
+      {
+        "id": "line-001a",
+        "productId": "prod-001",
+        "productName": "Wireless Over-Ear Headphones",
+        "productImageUrl": "/images/products/headphones-1.jpg",
+        "variant": { "id": "var-001a", "name": "Color", "value": "Black", "sku": "WH-BLK", "stock": 42 },
+        "quantity": 1,
+        "unitPrice": 89.99
+      },
+      {
+        "id": "line-001b",
+        "productId": "prod-003",
+        "productName": "Portable Bluetooth Speaker",
+        "productImageUrl": "/images/products/speaker-1.jpg",
+        "quantity": 2,
+        "unitPrice": 39.5
+      }
+    ],
+    "shippingAddress": {
+      "id": "addr-001",
+      "label": "Home",
+      "fullName": "Amelia Stone",
+      "phone": "+1 555-201-3344",
+      "line1": "48 Birchwood Lane",
+      "city": "Austin",
+      "state": "TX",
+      "postalCode": "73301",
+      "country": "USA",
+      "isDefault": true
+    },
+    "status": "delivered",
+    "payment": {
+      "method": "card",
+      "status": "paid",
+      "transactionId": "txn_8f2a91c3"
+    },
+    "subtotal": 168.99,
+    "shippingCost": 5.99,
+    "tax": 13.52,
+    "discount": 0,
+    "total": 188.5,
+    "currency": "USD",
+    "trackingNumber": "1Z999AA10123456784",
+    "estimatedDelivery": "2026-06-18T00:00:00.000Z",
+    "createdAt": "2026-06-10T14:22:00.000Z",
+    "updatedAt": "2026-06-18T09:41:00.000Z"
+  },
+  {
+    "id": "ord-002",
+    "orderNumber": "VS-100317",
+    "userId": "user-001",
+    "items": [
+      {
+        "id": "line-002a",
+        "productId": "prod-004",
+        "productName": "Classic Denim Jacket",
+        "productImageUrl": "/images/products/denim-jacket-1.jpg",
+        "variant": { "id": "var-004b", "name": "Size", "value": "M", "sku": "DJ-M", "stock": 15 },
+        "quantity": 1,
+        "unitPrice": 64.0
+      }
+    ],
+    "shippingAddress": {
+      "id": "addr-001",
+      "label": "Home",
+      "fullName": "Amelia Stone",
+      "phone": "+1 555-201-3344",
+      "line1": "48 Birchwood Lane",
+      "city": "Austin",
+      "state": "TX",
+      "postalCode": "73301",
+      "country": "USA",
+      "isDefault": true
+    },
+    "status": "shipped",
+    "payment": {
+      "method": "card",
+      "status": "paid",
+      "transactionId": "txn_1b7de402"
+    },
+    "subtotal": 64.0,
+    "shippingCost": 4.99,
+    "tax": 5.12,
+    "discount": 6.4,
+    "total": 67.71,
+    "currency": "USD",
+    "trackingNumber": "1Z999AA10123478213",
+    "estimatedDelivery": "2026-07-25T00:00:00.000Z",
+    "createdAt": "2026-07-19T10:05:00.000Z",
+    "updatedAt": "2026-07-20T16:30:00.000Z"
+  },
+  {
+    "id": "ord-003",
+    "orderNumber": "VS-100352",
+    "userId": "user-002",
+    "items": [
+      {
+        "id": "line-003a",
+        "productId": "prod-008",
+        "productName": "Vitamin C Face Serum",
+        "productImageUrl": "/images/products/face-serum-1.jpg",
+        "quantity": 3,
+        "unitPrice": 24.0
+      },
+      {
+        "id": "line-003b",
+        "productId": "prod-009",
+        "productName": "Leather Crossbody Bag",
+        "productImageUrl": "/images/products/crossbody-bag-1.jpg",
+        "variant": { "id": "var-009b", "name": "Color", "value": "Black", "sku": "CB-BLK", "stock": 19 },
+        "quantity": 1,
+        "unitPrice": 78.0
+      }
+    ],
+    "shippingAddress": {
+      "id": "addr-002",
+      "label": "Office",
+      "fullName": "Jordan Reyes",
+      "phone": "+1 555-887-2210",
+      "line1": "900 Maple Ridge Blvd",
+      "line2": "Suite 210",
+      "city": "Denver",
+      "state": "CO",
+      "postalCode": "80202",
+      "country": "USA",
+      "isDefault": false
+    },
+    "status": "processing",
+    "payment": {
+      "method": "paypal",
+      "status": "paid",
+      "transactionId": "txn_9c04af71"
+    },
+    "subtotal": 150.0,
+    "shippingCost": 0,
+    "tax": 12.0,
+    "discount": 0,
+    "total": 162.0,
+    "currency": "USD",
+    "createdAt": "2026-07-21T08:12:00.000Z",
+    "updatedAt": "2026-07-21T08:12:00.000Z"
+  }
+]

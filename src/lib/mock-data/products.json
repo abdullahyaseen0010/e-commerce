@@ -1,0 +1,235 @@
+[
+  {
+    "id": "prod-001",
+    "slug": "wireless-over-ear-headphones",
+    "name": "Wireless Over-Ear Headphones",
+    "description": "Noise-isolating over-ear headphones with 30-hour battery life and a foldable frame for travel.",
+    "shortDescription": "30-hour battery, noise-isolating design.",
+    "price": 89.99,
+    "compareAtPrice": 119.99,
+    "currency": "USD",
+    "images": [
+      { "id": "img-001a", "url": "/images/products/headphones-1.jpg", "alt": "Wireless over-ear headphones, front view", "isPrimary": true },
+      { "id": "img-001b", "url": "/images/products/headphones-2.jpg", "alt": "Wireless over-ear headphones, folded" }
+    ],
+    "categoryId": "cat-001",
+    "categorySlug": "electronics",
+    "tags": ["audio", "wireless", "travel"],
+    "variants": [
+      { "id": "var-001a", "name": "Color", "value": "Black", "sku": "WH-BLK", "stock": 42 },
+      { "id": "var-001b", "name": "Color", "value": "Silver", "sku": "WH-SLV", "stock": 17 }
+    ],
+    "stock": 59,
+    "rating": 4.5,
+    "reviewCount": 128,
+    "isFeatured": true,
+    "isNew": false,
+    "createdAt": "2026-02-10T09:00:00.000Z",
+    "updatedAt": "2026-06-01T12:00:00.000Z"
+  },
+  {
+    "id": "prod-002",
+    "slug": "smart-fitness-watch",
+    "name": "Smart Fitness Watch",
+    "description": "Track heart rate, sleep, and workouts with a 7-day battery and a bright always-on display.",
+    "shortDescription": "7-day battery, always-on display.",
+    "price": 129.0,
+    "currency": "USD",
+    "images": [
+      { "id": "img-002a", "url": "/images/products/fitness-watch-1.jpg", "alt": "Smart fitness watch on wrist", "isPrimary": true }
+    ],
+    "categoryId": "cat-001",
+    "categorySlug": "electronics",
+    "tags": ["wearable", "fitness"],
+    "variants": [
+      { "id": "var-002a", "name": "Band Color", "value": "Midnight Black", "sku": "FW-MID", "stock": 30 },
+      { "id": "var-002b", "name": "Band Color", "value": "Sand", "sku": "FW-SND", "stock": 12 }
+    ],
+    "stock": 42,
+    "rating": 4.2,
+    "reviewCount": 74,
+    "isFeatured": true,
+    "isNew": true,
+    "createdAt": "2026-05-15T09:00:00.000Z",
+    "updatedAt": "2026-06-10T12:00:00.000Z"
+  },
+  {
+    "id": "prod-003",
+    "slug": "portable-bluetooth-speaker",
+    "name": "Portable Bluetooth Speaker",
+    "description": "Compact splash-resistant speaker with rich bass and 12 hours of playtime.",
+    "shortDescription": "Splash-resistant, 12-hour playtime.",
+    "price": 39.5,
+    "compareAtPrice": 49.99,
+    "currency": "USD",
+    "images": [
+      { "id": "img-003a", "url": "/images/products/speaker-1.jpg", "alt": "Portable Bluetooth speaker", "isPrimary": true }
+    ],
+    "categoryId": "cat-001",
+    "categorySlug": "electronics",
+    "tags": ["audio", "portable"],
+    "stock": 76,
+    "rating": 4.0,
+    "reviewCount": 51,
+    "isFeatured": false,
+    "isNew": false,
+    "createdAt": "2026-01-20T09:00:00.000Z",
+    "updatedAt": "2026-04-18T12:00:00.000Z"
+  },
+  {
+    "id": "prod-004",
+    "slug": "classic-denim-jacket",
+    "name": "Classic Denim Jacket",
+    "description": "A relaxed-fit denim jacket in washed indigo, built for layering across seasons.",
+    "shortDescription": "Relaxed-fit, washed indigo denim.",
+    "price": 64.0,
+    "currency": "USD",
+    "images": [
+      { "id": "img-004a", "url": "/images/products/denim-jacket-1.jpg", "alt": "Classic denim jacket, front", "isPrimary": true },
+      { "id": "img-004b", "url": "/images/products/denim-jacket-2.jpg", "alt": "Classic denim jacket, back" }
+    ],
+    "categoryId": "cat-002",
+    "categorySlug": "fashion",
+    "tags": ["apparel", "denim", "unisex"],
+    "variants": [
+      { "id": "var-004a", "name": "Size", "value": "S", "sku": "DJ-S", "stock": 8 },
+      { "id": "var-004b", "name": "Size", "value": "M", "sku": "DJ-M", "stock": 15 },
+      { "id": "var-004c", "name": "Size", "value": "L", "sku": "DJ-L", "stock": 11 },
+      { "id": "var-004d", "name": "Size", "value": "XL", "sku": "DJ-XL", "stock": 6 }
+    ],
+    "stock": 40,
+    "rating": 4.6,
+    "reviewCount": 93,
+    "isFeatured": true,
+    "isNew": false,
+    "createdAt": "2025-11-02T09:00:00.000Z",
+    "updatedAt": "2026-03-22T12:00:00.000Z"
+  },
+  {
+    "id": "prod-005",
+    "slug": "canvas-low-top-sneakers",
+    "name": "Canvas Low-Top Sneakers",
+    "description": "Lightweight canvas sneakers with a rubber sole, made for everyday wear.",
+    "shortDescription": "Lightweight canvas, rubber sole.",
+    "price": 45.0,
+    "compareAtPrice": 55.0,
+    "currency": "USD",
+    "images": [
+      { "id": "img-005a", "url": "/images/products/sneakers-1.jpg", "alt": "Canvas low-top sneakers, pair", "isPrimary": true }
+    ],
+    "categoryId": "cat-002",
+    "categorySlug": "fashion",
+    "tags": ["footwear", "casual"],
+    "variants": [
+      { "id": "var-005a", "name": "Size", "value": "8", "sku": "SN-8", "stock": 10 },
+      { "id": "var-005b", "name": "Size", "value": "9", "sku": "SN-9", "stock": 14 },
+      { "id": "var-005c", "name": "Size", "value": "10", "sku": "SN-10", "stock": 9 }
+    ],
+    "stock": 33,
+    "rating": 4.3,
+    "reviewCount": 61,
+    "isFeatured": false,
+    "isNew": true,
+    "createdAt": "2026-05-01T09:00:00.000Z",
+    "updatedAt": "2026-06-05T12:00:00.000Z"
+  },
+  {
+    "id": "prod-006",
+    "slug": "ceramic-table-lamp",
+    "name": "Ceramic Table Lamp",
+    "description": "A minimalist ceramic table lamp with a linen shade, warm 2700K bulb included.",
+    "shortDescription": "Ceramic base, linen shade.",
+    "price": 54.0,
+    "currency": "USD",
+    "images": [
+      { "id": "img-006a", "url": "/images/products/table-lamp-1.jpg", "alt": "Ceramic table lamp on nightstand", "isPrimary": true }
+    ],
+    "categoryId": "cat-003",
+    "categorySlug": "home-living",
+    "tags": ["lighting", "decor"],
+    "stock": 25,
+    "rating": 4.4,
+    "reviewCount": 37,
+    "isFeatured": true,
+    "isNew": false,
+    "createdAt": "2026-02-28T09:00:00.000Z",
+    "updatedAt": "2026-05-12T12:00:00.000Z"
+  },
+  {
+    "id": "prod-007",
+    "slug": "woven-throw-blanket",
+    "name": "Woven Throw Blanket",
+    "description": "A soft, breathable cotton-blend throw in a herringbone weave, 50x60 inches.",
+    "shortDescription": "Cotton-blend, herringbone weave.",
+    "price": 32.0,
+    "compareAtPrice": 38.0,
+    "currency": "USD",
+    "images": [
+      { "id": "img-007a", "url": "/images/products/throw-blanket-1.jpg", "alt": "Woven throw blanket on sofa", "isPrimary": true }
+    ],
+    "categoryId": "cat-003",
+    "categorySlug": "home-living",
+    "tags": ["textile", "decor"],
+    "variants": [
+      { "id": "var-007a", "name": "Color", "value": "Oatmeal", "sku": "TB-OAT", "stock": 20 },
+      { "id": "var-007b", "name": "Color", "value": "Charcoal", "sku": "TB-CHR", "stock": 18 }
+    ],
+    "stock": 38,
+    "rating": 4.7,
+    "reviewCount": 45,
+    "isFeatured": false,
+    "isNew": false,
+    "createdAt": "2025-12-10T09:00:00.000Z",
+    "updatedAt": "2026-04-02T12:00:00.000Z"
+  },
+  {
+    "id": "prod-008",
+    "slug": "vitamin-c-face-serum",
+    "name": "Vitamin C Face Serum",
+    "description": "A lightweight brightening serum with 15% vitamin C and vitamin E, suitable for daily use.",
+    "shortDescription": "15% vitamin C, daily use.",
+    "price": 24.0,
+    "currency": "USD",
+    "images": [
+      { "id": "img-008a", "url": "/images/products/face-serum-1.jpg", "alt": "Vitamin C face serum bottle", "isPrimary": true }
+    ],
+    "categoryId": "cat-004",
+    "categorySlug": "beauty",
+    "tags": ["skincare", "serum"],
+    "stock": 64,
+    "rating": 4.1,
+    "reviewCount": 102,
+    "isFeatured": true,
+    "isNew": true,
+    "createdAt": "2026-06-01T09:00:00.000Z",
+    "updatedAt": "2026-06-15T12:00:00.000Z"
+  },
+  {
+    "id": "prod-009",
+    "slug": "leather-crossbody-bag",
+    "name": "Leather Crossbody Bag",
+    "description": "A compact crossbody bag in full-grain leather with an adjustable strap and interior zip pocket.",
+    "shortDescription": "Full-grain leather, adjustable strap.",
+    "price": 78.0,
+    "compareAtPrice": 95.0,
+    "currency": "USD",
+    "images": [
+      { "id": "img-009a", "url": "/images/products/crossbody-bag-1.jpg", "alt": "Leather crossbody bag", "isPrimary": true },
+      { "id": "img-009b", "url": "/images/products/crossbody-bag-2.jpg", "alt": "Leather crossbody bag, interior" }
+    ],
+    "categoryId": "cat-005",
+    "categorySlug": "accessories",
+    "tags": ["bag", "leather"],
+    "variants": [
+      { "id": "var-009a", "name": "Color", "value": "Cognac", "sku": "CB-COG", "stock": 14 },
+      { "id": "var-009b", "name": "Color", "value": "Black", "sku": "CB-BLK", "stock": 19 }
+    ],
+    "stock": 33,
+    "rating": 4.8,
+    "reviewCount": 66,
+    "isFeatured": true,
+    "isNew": false,
+    "createdAt": "2025-10-05T09:00:00.000Z",
+    "updatedAt": "2026-03-01T12:00:00.000Z"
+  }
+]

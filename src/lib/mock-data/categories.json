@@ -1,0 +1,47 @@
+[
+  {
+    "id": "cat-001",
+    "slug": "electronics",
+    "name": "Electronics",
+    "description": "Audio, wearables, and everyday tech.",
+    "imageUrl": "/images/categories/electronics.jpg",
+    "parentId": null,
+    "productCount": 3
+  },
+  {
+    "id": "cat-002",
+    "slug": "fashion",
+    "name": "Fashion",
+    "description": "Apparel and footwear for everyday wear.",
+    "imageUrl": "/images/categories/fashion.jpg",
+    "parentId": null,
+    "productCount": 2
+  },
+  {
+    "id": "cat-003",
+    "slug": "home-living",
+    "name": "Home & Living",
+    "description": "Furniture and decor for every room.",
+    "imageUrl": "/images/categories/home-living.jpg",
+    "parentId": null,
+    "productCount": 2
+  },
+  {
+    "id": "cat-004",
+    "slug": "beauty",
+    "name": "Beauty & Personal Care",
+    "description": "Skincare, haircare, and grooming essentials.",
+    "imageUrl": "/images/categories/beauty.jpg",
+    "parentId": null,
+    "productCount": 1
+  },
+  {
+    "id": "cat-005",
+    "slug": "accessories",
+    "name": "Accessories",
+    "description": "Bags, watches, and small finishing touches.",
+    "imageUrl": "/images/categories/accessories.jpg",
+    "parentId": "cat-002",
+    "productCount": 1
+  }
+]
